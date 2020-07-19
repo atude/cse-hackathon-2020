@@ -34,7 +34,7 @@ const tasks = [
   },
   {
     id: 2,
-    description: "Help me build an AK-47",
+    description: "Help me to get out of Iron",
     categories: ["Technology", "Gardening"],
     customerName: "Hectic Habib",
     creationTimestamp: new Date().getTime(),
@@ -63,7 +63,10 @@ const StyledDashboard = styled.div`
     color: #fff;
     border-radius: 16px;
     padding: 0.4em 1em 0.4em 1em;
-    margin: 0.2em;
+    margin: 0.3em;
+  }
+  .chip-wrapper {
+    margin: 1em;
   }
 `;
 
@@ -78,7 +81,7 @@ const VolunteerDashboard = () => {
             <Avatar className="avatar" />
             <br /><br />
             <Typography variant="h5">
-              Welcome, <br /><b>Bob Michael</b>
+              Welcome, <br /><b>Jonathan</b>
             </Typography>
             <br />
             <Typography>
@@ -99,17 +102,19 @@ const VolunteerDashboard = () => {
               <Typography>4.5/5</Typography>
             </div>
             <br />
-            <Typography><b>Skills</b></Typography>
-            <br />
             <div>
-              {skills.map((skill) => (
-                <span 
+              <Typography><b>Skills</b></Typography>
+            </div>
+            <br />
+            <div className="chip-wrapper">
+            {skills.map((skill) => (
+                <span
                   className="skill-chip"
-                  style={{backgroundColor: theme.palette.primary.main}}
+                  style={{ backgroundColor: theme.palette.primary.main }}
                 >
                   {skill}
                 </span>
-              ))}
+            ))}
             </div>
             <br /><br />
             <Button
@@ -128,14 +133,16 @@ const VolunteerDashboard = () => {
             </Typography>
             <br /><Divider /><br />
             {tasks.map((task) => (
-              <TaskItem
-                key={task.id}
-                description={task.description}
-                categories={task.categories}
-                customerName={task.customerName}
-                languages={task.languages}
-                creationTimestamp={task.creationTimestamp}
-              />
+              <div className="chip-wrapper">
+                <TaskItem
+                  key={task.id}
+                  description={task.description}
+                  categories={task.categories}
+                  customerName={task.customerName}
+                  languages={task.languages}
+                  creationTimestamp={task.creationTimestamp}
+                />
+              </div>
             ))}
           </Paper>
         </Grid>
